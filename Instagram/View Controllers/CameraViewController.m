@@ -7,8 +7,12 @@
 //
 
 #import "CameraViewController.h"
+#import "Post.h"
 
 @interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextView *captionField;
+@property (weak, nonatomic) IBOutlet UIImageView *instaImage;
 
 @end
 
@@ -45,19 +49,39 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
-    
+    self.instaImage.image = originalImage;
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
-*/
 
+- (IBAction)clickedPost:(id)sender {
+    UIImage *imageToPost = [self resizeImage:self.instaImage.image withSize:CGSizeMake (400,400)];
+    [Post postUserImage:imageToPost withCaption:self.captionField.text withCompletion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+ /*
+  #pragma mark - Navigation
+  
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  // Get the new view controller using [segue destinationViewController].
+  // Pass the selected object to the new view controller.
+  }
+  */
 @end

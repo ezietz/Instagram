@@ -153,7 +153,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vaL-5l-fJt">
             <objects>
-                <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X1v-JF-Rqm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X1v-JF-Rqm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile_tab" id="4Kz-Cw-3ql"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aaG-rQ-0ew">
@@ -194,17 +194,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insert caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-ZX-MUE">
-                                <rect key="frame" x="149" y="416" width="159" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-Qx-66e">
                                 <rect key="frame" x="192" y="533" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="clickedPost:" destination="Nsu-J9-awz" eventType="touchUpInside" id="ykW-Q7-y5R"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIF-KA-X4T">
                                 <rect key="frame" x="87" y="238" width="240" height="128"/>
@@ -218,11 +214,23 @@
                                 <rect key="frame" x="87" y="238" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Uwh-St-mO7">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="c31-6h-ouG"/>
                     </view>
                     <navigationItem key="navigationItem" id="zxr-vK-vWC"/>
+                    <connections>
+                        <outlet property="captionField" destination="Uwh-St-mO7" id="3Cr-rc-vvx"/>
+                        <outlet property="instaImage" destination="AHZ-FF-clN" id="N7a-U6-NZq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy9-bU-ScP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,7 +239,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="0m8-Vh-wFp">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="X28-f1-7V1" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="X28-f1-7V1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vd6-Wd-lZE">
                         <autoresizingMask key="autoresizingMask"/>
