@@ -7,6 +7,9 @@
 //
 
 #import "TimelineViewController.h"
+#import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController ()
 
@@ -17,6 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)clickedLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
+    NSLog(@"User logged out successfully");
+    
+    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+    
+    LoginViewController *loginController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:loginController];
+    appDelegateTemp.window.rootViewController = navigation;
+
+    
+//    [loginViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [self presentViewController:loginViewController animated:NO completion:nil];
 }
 
 /*

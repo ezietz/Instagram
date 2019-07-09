@@ -39,7 +39,8 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"registerSegue" sender:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
+
             // manually segue to logged in view
         }
     }];
