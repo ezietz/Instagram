@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *postArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -26,6 +28,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self fetchPosts];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+
 }
 
 - (void) fetchPosts{
@@ -45,8 +51,10 @@
             NSLog(@"Error");
             // handle error
         }
+        [self.refreshControl endRefreshing];
     }];
 }
+
 - (IBAction)clickedLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
     NSLog(@"User logged out successfully");
