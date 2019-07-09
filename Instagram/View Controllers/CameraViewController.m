@@ -71,7 +71,7 @@
 - (IBAction)clickedPost:(id)sender {
     UIImage *imageToPost = [self resizeImage:self.instaImage.image withSize:CGSizeMake (400,400)];
     [Post postUserImage:imageToPost withCaption:self.captionField.text withCompletion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tabBarController setSelectedIndex:0];
 }
 
 
