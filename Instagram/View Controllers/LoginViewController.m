@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view.
 
 }
+
 - (IBAction)clickedLogin:(id)sender {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
@@ -32,22 +33,18 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             // display view controller that needs to shown after successful login
         }
     }];
 }
 
-/*
-#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+////     Get the new view controller using [segue destinationViewController].
+////     Pass the selected object to the new view controller.
+//}
 
-- (IBAction)usernameField:(id)sender {
-}
+
 @end

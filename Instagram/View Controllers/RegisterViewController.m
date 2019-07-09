@@ -24,8 +24,8 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)registerUser {
-    // initialize a user object
+- (IBAction)clickedRegister:(id)sender {
+    
     PFUser *newUser = [PFUser user];
     
     // set user properties
@@ -39,13 +39,11 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            
+            [self performSegueWithIdentifier:@"registerSegue" sender:nil];
             // manually segue to logged in view
         }
     }];
-}
-
-- (IBAction)clickedRegister:(id)sender {
+    
 }
 
 - (IBAction)clickedBackLogin:(id)sender {
@@ -53,14 +51,10 @@
 }
 
 
-/*
-#pragma mark - Navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

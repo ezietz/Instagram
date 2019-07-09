@@ -13,6 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -43,6 +44,7 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="clickedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCd-Mg-3qK"/>
+                                    <segue destination="JtG-NZ-vcs" kind="show" identifier="loginSegue" id="pQ4-Xi-4gL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jw-cw-x5c">
@@ -63,7 +65,6 @@
                         <outlet property="usernameField" destination="juB-Bt-Uor" id="V9E-og-5hU"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="-108"/>
         </scene>
@@ -103,6 +104,7 @@
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="clickedRegister:" destination="7AZ-EV-8sK" eventType="touchUpInside" id="nGz-aa-cvf"/>
+                                    <segue destination="JtG-NZ-vcs" kind="show" identifier="registerSegue" id="T8M-On-lMS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrN-p7-Abw">
@@ -127,8 +129,26 @@
             </objects>
             <point key="canvasLocation" x="785.50724637681162" y="-108.48214285714285"/>
         </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="IyI-Of-Xw0">
+            <objects>
+                <viewController id="JtG-NZ-vcs" customClass="TimelineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aOA-Yl-mLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KwH-IX-zqY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RW-9O-5UK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="379" y="610"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Icon-60" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pQ4-Xi-4gL"/>
+    </inferredMetricsTieBreakers>
 </document>
