@@ -62,7 +62,7 @@
                     <connections>
                         <outlet property="passwordField" destination="Po6-Aw-X0H" id="d1f-Vk-HVg"/>
                         <outlet property="usernameField" destination="juB-Bt-Uor" id="V9E-og-5hU"/>
-                        <segue destination="X28-f1-7V1" kind="show" identifier="loginSegue" id="syc-1d-Aki"/>
+                        <segue destination="X28-f1-7V1" kind="presentation" identifier="loginSegue" id="syc-1d-Aki"/>
                     </connections>
                 </viewController>
             </objects>
@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="785.50724637681162" y="-108.48214285714285"/>
         </scene>
-        <!--Timeline View Controller-->
+        <!--Timeline-->
         <scene sceneID="IyI-Of-Xw0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RW-9O-5UK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,7 +174,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KwH-IX-zqY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zz1-pJ-Orb">
+                    <navigationItem key="navigationItem" title="Timeline" id="zz1-pJ-Orb">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="jr0-Ua-TuS">
                             <connections>
                                 <action selector="clickedLogout:" destination="JtG-NZ-vcs" id="eiq-O7-eru"/>
@@ -224,10 +224,10 @@
             </objects>
             <point key="canvasLocation" x="317" y="1383"/>
         </scene>
-        <!--Camera View Controller-->
+        <!--Camera-->
         <scene sceneID="8na-94-fQZ">
             <objects>
-                <viewController id="Nsu-J9-awz" customClass="CameraViewController" sceneMemberID="viewController">
+                <viewController title="Camera" id="Nsu-J9-awz" customClass="CameraViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WMT-0T-WED">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
