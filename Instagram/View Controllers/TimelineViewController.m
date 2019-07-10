@@ -52,9 +52,12 @@
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            NSLog(@"Successfully loaded home timeline!");
-            self.isMoreDataLoading = false;
-            [self.postArray addObjectsFromArray:posts];
+            if (lastDate){
+                NSLog(@"Successfully loaded home timeline!");
+                self.isMoreDataLoading = false;
+                [self.postArray addObjectsFromArray:posts];
+            }
+            self.postArray = posts;
             [self.tableView reloadData];
         }
         else {
