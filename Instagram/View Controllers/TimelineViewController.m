@@ -56,15 +56,18 @@
 }
 
 - (IBAction)clickedLogout:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
-    NSLog(@"User logged out successfully");
-    
-    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-    
-    LoginViewController *loginController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:loginController];
-    appDelegateTemp.window.rootViewController = navigation;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if(PFUser.currentUser == nil) {
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            appDelegate.window.rootViewController = loginViewController;
+            
+            NSLog(@"User logged out successfully");
+        } else {
+            NSLog(@"Error logging out: %@", error);
+        }
+    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
