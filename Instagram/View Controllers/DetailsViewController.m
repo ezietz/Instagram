@@ -36,7 +36,7 @@
     [formatter setDateFormat:@"E MMM d HH:mm:ss y"];
     NSString *stringFromDate = [formatter stringFromDate:createdAt];
     self.timeField.text = stringFromDate;
-
+    
 }
 
 
