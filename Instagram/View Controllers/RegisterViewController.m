@@ -21,27 +21,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)clickedRegister:(id)sender {
     
     PFUser *newUser = [PFUser user];
-    
-    // set user properties
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
     
-    // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
             [self dismissViewControllerAnimated:YES completion:nil];
-
-            // manually segue to logged in view
         }
     }];
     

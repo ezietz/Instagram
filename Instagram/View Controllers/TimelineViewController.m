@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "PostCell.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -49,7 +50,6 @@
         }
         else {
             NSLog(@"Error");
-            // handle error
         }
         [self.refreshControl endRefreshing];
     }];
@@ -70,12 +70,12 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.postArray[indexPath.row];
+    
+    cell.post = post;
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
             return NSLog(@"%@", error);
         }
-        
-        // Do something with the image
         cell.photoView.image = [UIImage imageWithData:data];
     }];
     
@@ -87,18 +87,13 @@
     return self.postArray.count;
 }
 
-@end
-    
-//    [loginViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [self presentViewController:loginViewController animated:NO completion:nil];
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        PostCell *tappedCell = sender;
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = tappedCell.post;
+    }
 }
-*/
+    
+@end
+

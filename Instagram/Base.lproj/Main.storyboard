@@ -165,6 +165,7 @@
                                         <connections>
                                             <outlet property="captionText" destination="e1C-Wz-UCn" id="gT5-YR-Lgg"/>
                                             <outlet property="photoView" destination="Pj6-PU-cI2" id="27P-yr-Ywu"/>
+                                            <segue destination="u6j-as-ARp" kind="show" identifier="detailSegue" id="Iv7-CO-AGX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -272,6 +273,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy9-bU-ScP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1288.4057971014495" y="1384.8214285714284"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="HLC-8o-8E9">
+            <objects>
+                <viewController id="u6j-as-ARp" customClass="DetailsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tXz-Ay-rXr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6FI-IW-bib">
+                                <rect key="frame" x="87" y="149" width="240" height="213"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-qv-ebY">
+                                <rect key="frame" x="87" y="406" width="222" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Stamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyn-wj-fJ3">
+                                <rect key="frame" x="87" y="472" width="222" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gUi-lK-3ZP"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionField" destination="QnE-qv-ebY" id="u9R-J9-9Ng"/>
+                        <outlet property="photoView" destination="6FI-IW-bib" id="EDV-NP-nff"/>
+                        <outlet property="timeField" destination="lyn-wj-fJ3" id="LCH-0E-Kmx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTy-iH-HfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171" y="1422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0m8-Vh-wFp">

@@ -7,8 +7,14 @@
 //
 
 #import "DetailsViewController.h"
+#import "TimelineViewController.h"
+#import "Post.h"
 
 @interface DetailsViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UILabel *timeField;
+@property (weak, nonatomic) IBOutlet UILabel *captionField;
 
 @end
 
@@ -16,8 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        self.photoView.image = [UIImage imageWithData:data];
+    }];
+    
+    self.captionField.text = self.post.caption;
 }
+
 
 /*
 #pragma mark - Navigation
