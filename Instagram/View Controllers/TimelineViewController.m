@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "PostCell.h"
 #import "DetailsViewController.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
@@ -95,6 +96,7 @@
     }];
     
     cell.captionText.text = post.caption;
+    cell.userText.text = post.author.username;
     return cell;
 }
 

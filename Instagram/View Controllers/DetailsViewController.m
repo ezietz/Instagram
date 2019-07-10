@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *timeField;
 @property (weak, nonatomic) IBOutlet UILabel *captionField;
+@property (weak, nonatomic) IBOutlet UILabel *userText;
 
 @end
 
@@ -30,7 +31,7 @@
         self.photoView.image = [UIImage imageWithData:data];
     }];
     self.captionField.text = self.post.caption;
-    
+    self.userText.text = self.post.author.username;
     NSDate *createdAt = [self.post createdAt];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"E MMM d HH:mm:ss y"];

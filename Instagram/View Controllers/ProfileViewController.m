@@ -39,7 +39,6 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     self.profileView.image = originalImage;
-    
     self.profileView.image = editedImage;
     NSData *imageData = UIImageJPEGRepresentation(editedImage, 1);
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"image.png" data: imageData];
