@@ -29,8 +29,14 @@
         }
         self.photoView.image = [UIImage imageWithData:data];
     }];
-    
     self.captionField.text = self.post.caption;
+    
+    NSDate *createdAt = [self.post createdAt];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss y"];
+    NSString *stringFromDate = [formatter stringFromDate:createdAt];
+    self.timeField.text = stringFromDate;
+
 }
 
 
