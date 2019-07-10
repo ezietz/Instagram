@@ -13,12 +13,12 @@
 #import "PostCell.h"
 #import "DetailsViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *postArray;
+@property (strong, nonatomic) NSMutableArray *postArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.postArray = [[NSMutableArray alloc] init];
     [self fetchPosts];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
@@ -35,17 +36,25 @@
 
 }
 
-- (void) fetchPosts{
+- (void) fetchPosts {
+    [self fetchPostsWithFilter:nil];
+}
+
+- (void) fetchPostsWithFilter:(NSDate *) lastDate {
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
+    if (lastDate){
+        [postQuery whereKey:@"createdAt" lessThan:lastDate];
+    }
     postQuery.limit = 20;
     
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             NSLog(@"Successfully loaded home timeline!");
-            self.postArray = posts;
+            self.isMoreDataLoading = false;
+            [self.postArray addObjectsFromArray:posts];
             [self.tableView reloadData];
         }
         else {
@@ -95,6 +104,22 @@
         PostCell *tappedCell = sender;
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = tappedCell.post;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading) {
+        // self.isMoreDataLoading = true;
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            Post *lastPost = [self.postArray lastObject];
+            NSDate *lastDate = lastPost.createdAt;
+            [self fetchPostsWithFilter:lastDate];
+        }
     }
 }
     
