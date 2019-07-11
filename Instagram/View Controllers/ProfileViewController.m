@@ -34,12 +34,13 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-    layout.minimumInteritemSpacing = 5;
-    layout.minimumLineSpacing = 5;
-    CGFloat postersPerLine = 2;
+    layout.minimumInteritemSpacing = 3;
+    layout.minimumLineSpacing = 3;
+    CGFloat postersPerLine = 3;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
-    CGFloat itemHeight = itemWidth * 1.5;
-    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+//    CGFloat itemHeight = itemWidth * 1.5;
+    layout.itemSize = CGSizeMake(itemWidth, itemWidth);
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.width/2;
     
     self.user = [PFUser currentUser]; // from Parse API
     PFFileObject *image = [self.user objectForKey:@"image"];
