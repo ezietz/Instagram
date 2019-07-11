@@ -19,6 +19,7 @@
 @property (strong, nonatomic) Post *post;
 @property (nonatomic, weak) id<PostCellDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 
 - (void) didTapUserProfile:(UITapGestureRecognizer *) sender;
 @end

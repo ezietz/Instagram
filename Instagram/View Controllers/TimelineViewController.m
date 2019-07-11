@@ -95,6 +95,7 @@
         cell.photoView.image = [UIImage imageWithData:data];
     }];
     cell.captionText.text = post.caption;
+    cell.usernameLabel.text = post.author.username;
     cell.userText.text = post.author.username;
     PFFileObject *image = [cell.post.author objectForKey:@"image"];
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -102,6 +103,8 @@
             return NSLog(@"%@", error);
         }
         cell.profileImage.image = [UIImage imageWithData:data];
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2;
+        cell.profileImage.clipsToBounds = YES;
     }];
     cell.delegate = self;
     return cell;
