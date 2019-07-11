@@ -22,8 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numPosts;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowers;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowing;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
-//@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -35,9 +34,10 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(viewDidLoad) forControlEvents:UIControlEventValueChanged];
-//    [self.collectionView insertSubview:self.refreshControl atIndex:0];
+    self.collectionView.alwaysBounceVertical = YES;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
@@ -59,6 +59,10 @@
     }];
     
     self.username.text = self.user.username;
+    self.navigationItem.title = [NSString stringWithFormat:@"@%@", self.user.username];
+}
+
+- (void) fetchPosts{
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
@@ -73,9 +77,8 @@
         else {
             NSLog(@"Error");
         }
-//        [self.refreshControl endRefreshing];
+        [self.refreshControl endRefreshing];
     }];
-    self.navigationItem.title = [NSString stringWithFormat:@"@%@", self.user.username];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

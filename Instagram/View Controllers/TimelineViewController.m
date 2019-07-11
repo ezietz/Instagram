@@ -53,7 +53,6 @@
     postQuery.limit = 20;
 
     [[MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES]  setLabelText:@"Loading"];
-    // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts && (posts.count != 0)) {
             if (lastDate){
@@ -69,7 +68,6 @@
         }
         [self.refreshControl endRefreshing];
         [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
-
     }];
 }
 
@@ -91,7 +89,6 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.postArray[indexPath.row];
-    
     cell.post = post;
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
@@ -99,7 +96,6 @@
         }
         cell.photoView.image = [UIImage imageWithData:data];
     }];
-    
     cell.captionText.text = post.caption;
     cell.userText.text = post.author.username;
     return cell;
@@ -119,10 +115,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(!self.isMoreDataLoading) {
-        // self.isMoreDataLoading = true;
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-        
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = true;
@@ -134,4 +128,3 @@
 }
     
 @end
-
