@@ -172,6 +172,13 @@
                                                     <rect key="frame" x="0.0" y="-5" width="414" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1C-Wz-UCn">
+                                                    <rect key="frame" x="13" y="266" width="196" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFX-GC-AvC">
                                                     <rect key="frame" x="13" y="241" width="82" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -189,18 +196,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="66422791_465949564229928_9046473835854954496_n"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1C-Wz-UCn">
-                                                    <rect key="frame" x="13" y="266" width="196" height="21"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIS-ZM-cnY">
+                                                    <rect key="frame" x="241" y="195" width="103" height="113"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionText" destination="e1C-Wz-UCn" id="gT5-YR-Lgg"/>
                                             <outlet property="photoView" destination="Pj6-PU-cI2" id="27P-yr-Ywu"/>
+                                            <outlet property="profileImage" destination="UIS-ZM-cnY" id="FB2-Bf-QVx"/>
                                             <outlet property="userText" destination="mFX-GC-AvC" id="W6q-a4-2ii"/>
                                             <segue destination="u6j-as-ARp" kind="show" identifier="detailSegue" id="Iv7-CO-AGX"/>
                                         </connections>
@@ -220,11 +225,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Eaw-9Y-Ort" id="KNB-kg-RM6"/>
+                        <segue destination="Eil-fK-m2F" kind="show" identifier="profileSegue" id="OOW-Nk-Kzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RW-9O-5UK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198.5507246376815" y="609.375"/>
+            <point key="canvasLocation" x="2137.68115942029" y="608.70535714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vaL-5l-fJt">
@@ -536,4 +542,7 @@
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OOW-Nk-Kzh"/>
+    </inferredMetricsTieBreakers>
 </document>

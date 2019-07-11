@@ -10,7 +10,7 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "PostCollectionViewCell.h"
-#import "Parse/Parse.h"
+#import <Parse/Parse.h>
 #import "TimelineViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
@@ -47,7 +47,10 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
 
-    self.user = [PFUser currentUser]; // from Parse API
+    if (self.user == nil)
+    {
+        self.user = [PFUser currentUser]; // from Parse API
+    }
     PFFileObject *image = [self.user objectForKey:@"image"];
     self.profileView.layer.cornerRadius = self.profileView.frame.size.width/2;
     self.profileView.clipsToBounds = YES;

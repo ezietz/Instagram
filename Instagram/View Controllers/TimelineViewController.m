@@ -96,6 +96,14 @@
     }];
     cell.captionText.text = post.caption;
     cell.userText.text = post.author.username;
+    PFFileObject *image = [cell.post.author objectForKey:@"image"];
+    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        cell.profileImage.image = [UIImage imageWithData:data];
+    }];
+    cell.delegate = self;
     return cell;
 }
 
@@ -108,6 +116,10 @@
         PostCell *tappedCell = sender;
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = tappedCell.post;
+    }
+    else{
+        ProfileViewController *profileViewController = [segue destinationViewController];
+                                                        profileViewController.user = sender;
     }
 }
 
@@ -123,6 +135,10 @@
             [self fetchPostsWithFilter:lastDate];
         }
     }
+}
+
+- (void)postCell:(PostCell *) postCell  didTap:(PFUser *) user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
     
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol PostCellDelegate;
 
 @interface PostCell : UITableViewCell
 
@@ -17,7 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *captionText;
 @property (strong, nonatomic) Post *post;
+@property (nonatomic, weak) id<PostCellDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 
+- (void) didTapUserProfile:(UITapGestureRecognizer *) sender;
 @end
 
-NS_ASSUME_NONNULL_END
+@protocol PostCellDelegate
+- (void)postCell:(PostCell *)postCell didTap: (PFUser *) user;
+@end
