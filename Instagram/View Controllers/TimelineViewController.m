@@ -43,31 +43,29 @@
     [self fetchPostsWithFilter:nil];
 }
 
-- (void) fetchPostsWithFilter:(NSDate *) lastDate {
+- (void) fetchPostsWithFilter: (NSDate *) lastDate {
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
-    if (lastDate){
+    if (lastDate) {
         [postQuery whereKey:@"createdAt" lessThan:lastDate];
     }
     postQuery.limit = 20;
-
-    [[MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES]  setLabelText:@"Loading"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts && (posts.count != 0)) {
-            if (lastDate){
-                NSLog(@"Successfully loaded home timeline!");
+        if ([posts count] != 0) {
+            if (lastDate) {
                 self.isMoreDataLoading = false;
                 [self.postArray addObjectsFromArray:posts];
+            } else {
+                self.postArray = posts;
             }
-            self.postArray = posts;
             [self.tableView reloadData];
-        }
-        else {
-            NSLog(@"Error");
+        } else {
+            NSLog(@"%@", error.localizedDescription);
         }
         [self.refreshControl endRefreshing];
-        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
