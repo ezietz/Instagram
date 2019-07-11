@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *registerButton;
 
 @end
 
@@ -20,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.loginButton.layer.cornerRadius = 3;
+    self.registerButton.layer.cornerRadius = 3;
 }
 
 - (IBAction)clickedLogin:(id)sender {

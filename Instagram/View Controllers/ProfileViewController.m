@@ -68,6 +68,7 @@
             NSLog(@"Error");
         }
     }];
+    self.navigationItem.title = [NSString stringWithFormat:@"@%@", self.user.username];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

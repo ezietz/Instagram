@@ -34,6 +34,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"Instagram"];
 
 }
 
