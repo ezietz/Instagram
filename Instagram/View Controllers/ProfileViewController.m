@@ -52,8 +52,15 @@
         self.user = [PFUser currentUser]; // from Parse API
     }
     PFFileObject *image = [self.user objectForKey:@"image"];
-    self.profileView.layer.cornerRadius = self.profileView.frame.size.width/2;
+    
+//    cell.profileImage.image = [UIImage imageWithData:data];
+//    cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2;
+//    cell.profileImage.clipsToBounds = YES;
+//    
+    
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
     self.profileView.clipsToBounds = YES;
+    
     [image getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!data){
             return NSLog(@"%@", error);
