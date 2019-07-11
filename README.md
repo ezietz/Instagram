@@ -39,6 +39,7 @@ The following **additional** features are implemented:
 - [x] Added real Instagram title on applicable screens
 - [x] Allowed user to see how many posts they have made on their profile view
 - [x] Customized the selection effect of each post cell and navigation bar
+- [x] Allowed user to pull to refresh in order to view their posts in profile view
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
