@@ -11,6 +11,7 @@
 #import "PostCell.h"
 #import "PostCollectionViewCell.h"
 #import "Parse/Parse.h"
+#import "TimelineViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *numPosts;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowers;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowing;
+//@property (nonatomic, strong) UIRefreshControl *refreshControl;
+//@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -32,18 +35,22 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(viewDidLoad) forControlEvents:UIControlEventValueChanged];
+//    [self.collectionView insertSubview:self.refreshControl atIndex:0];
+    
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
     layout.minimumInteritemSpacing = 3;
     layout.minimumLineSpacing = 3;
     CGFloat postersPerLine = 3;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
-//    CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
-    self.profileView.layer.cornerRadius = self.profileView.frame.size.width/2;
-    
+
     self.user = [PFUser currentUser]; // from Parse API
     PFFileObject *image = [self.user objectForKey:@"image"];
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.width/2;
+    self.profileView.clipsToBounds = YES;
     [image getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!data){
             return NSLog(@"%@", error);
@@ -52,7 +59,6 @@
     }];
     
     self.username.text = self.user.username;
-    
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
@@ -67,6 +73,7 @@
         else {
             NSLog(@"Error");
         }
+//        [self.refreshControl endRefreshing];
     }];
     self.navigationItem.title = [NSString stringWithFormat:@"@%@", self.user.username];
 }
@@ -125,15 +132,5 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.postArray.count;
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
