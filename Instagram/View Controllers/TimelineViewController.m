@@ -96,7 +96,6 @@
     }];
     cell.captionText.text = post.caption;
     cell.usernameLabel.text = post.author.username;
-    cell.userText.text = post.author.username;
     PFFileObject *image = [cell.post.author objectForKey:@"image"];
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
@@ -107,7 +106,11 @@
         cell.profileImage.clipsToBounds = YES;
     }];
     cell.delegate = self;
+    
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"66422791_465949564229928_9046473835854954496_n"] forState:UIControlStateNormal];
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
     return cell;
+    
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

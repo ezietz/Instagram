@@ -49,7 +49,7 @@
 
     if (self.user == nil)
     {
-        self.user = [PFUser currentUser]; // from Parse API
+        self.user = [PFUser currentUser]; 
     }
     PFFileObject *image = [self.user objectForKey:@"image"];
     

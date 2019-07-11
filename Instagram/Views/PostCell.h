@@ -13,13 +13,15 @@
 
 @interface PostCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *userText;
+@property (strong, nonatomic) IBOutlet UILabel *countIncrement;
+//@property (weak, nonatomic) IBOutlet UILabel *userText;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *captionText;
 @property (strong, nonatomic) Post *post;
 @property (nonatomic, weak) id<PostCellDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
 
 - (void) didTapUserProfile:(UITapGestureRecognizer *) sender;
 @end

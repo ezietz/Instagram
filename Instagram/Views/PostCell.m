@@ -25,6 +25,35 @@
     [super setSelected:selected animated:animated];
 }
 
+- (IBAction)didTapLike:(id)sender {
+    PFUser *user = [PFUser currentUser];
+    NSArray *likeArray = [[NSArray alloc]init];
+    likeArray = [self.post objectForKey:@"likeArray"];
+    NSString *username = [user objectForKey:@"username"];
+    if (![likeArray containsObject:user.username]){
+        NSLog(@"Successfully favorited!");
+        [self.favoriteButton setSelected:YES];
+        [self.post addObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long) likeArray.count];
+        self.countIncrement.text = likeCount;
+    }
+    else{
+        NSLog(@"Successfully unfavorited!");
+        [self.favoriteButton setSelected:NO];
+        NSString *username = user.username;
+        [self.post removeObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long) likeArray.count];
+        self.countIncrement.text = likeCount;
+    }
+}
+
 //- (void) postCell:(PostCell *) postCell didTap: (PFUser *) user{
 //    [self.delegate postCell:self didTap:self.post.author];
 //}
