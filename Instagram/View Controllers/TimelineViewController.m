@@ -55,7 +55,7 @@
     [[MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES]  setLabelText:@"Loading"];
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts) {
+        if (posts && (posts.count != 0)) {
             if (lastDate){
                 NSLog(@"Successfully loaded home timeline!");
                 self.isMoreDataLoading = false;

@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *captionText;
 @property (strong, nonatomic) Post *post;
 
-
 @end
 
 NS_ASSUME_NONNULL_END
