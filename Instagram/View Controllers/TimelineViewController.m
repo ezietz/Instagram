@@ -49,7 +49,8 @@
         [postQuery whereKey:@"createdAt" lessThan:lastDate];
     }
     postQuery.limit = 20;
-    
+
+    [[MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES]  setLabelText:@"Loading"];
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
@@ -65,6 +66,8 @@
             NSLog(@"Error");
         }
         [self.refreshControl endRefreshing];
+        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+
     }];
 }
 
