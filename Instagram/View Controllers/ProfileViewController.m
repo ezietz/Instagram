@@ -117,6 +117,7 @@
         }
         cell.imageView.image = [UIImage imageWithData:data];
     }];
+    self.numPosts.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.postArray.count];
     
     return cell;
 }
