@@ -30,7 +30,7 @@ The following **optional** features are implemented:
 - [x] Display the profile photo with each post
 - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
@@ -38,7 +38,8 @@ The following **additional** features are implemented:
 - [x] Added tab bar to allow user to smoothly transition between viewing their feed and accessing the camera
 - [x] Added real Instagram title on applicable screens
 - [x] Allowed user to see how many posts they have made on their profile view
-- [x] Customized the selection effect of each post cell and navigation bar
+- [x] Customized the selection effect of each post cell 
+- [x] Customized the navigation bar to have Instagram logo
 - [x] Allowed user to pull to refresh in order to view their posts in profile view
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
