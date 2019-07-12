@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **25** hours spent in total
 
 ## User Stories
 
@@ -18,7 +18,6 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Run your app on your phone and use the camera to take the photo
 - [x] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
 - [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
@@ -29,8 +28,9 @@ The following **optional** features are implemented:
 - [x] Allow the logged in user to add a profile photo
 - [x] Display the profile photo with each post
 - [x] Tapping on a post's username or profile photo goes to that user's profile page
-- [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [x] User can like a post and see number of likes for each post in the post details screen.
+- [ ] User can comment on a post and see all comments for each post in the post details screen.
+- [ ] Run your app on your phone and use the camera to take the photo
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
@@ -44,8 +44,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I'd like to discuss how to implement the custom camera view.
+2. I'm curious about how to implement the messaging between users.
 
 ## Video Walkthrough
 
