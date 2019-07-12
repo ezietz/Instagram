@@ -35,8 +35,10 @@
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    self.navigationItem.title = [NSString stringWithFormat:@"Instagram"];
-
+//    self.navigationItem.title = [NSString stringWithFormat:@"Instagram"];
+    
+    UIImage *image = [UIImage imageNamed:@"1200px-Instagram_logo.svg"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
 }
 
 - (void) fetchPosts {

@@ -246,11 +246,12 @@
                         <viewLayoutGuide key="safeArea" id="KwH-IX-zqY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Timeline" id="zz1-pJ-Orb">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="jr0-Ua-TuS">
+                        <barButtonItem key="leftBarButtonItem" title="Logout              " id="jr0-Ua-TuS">
                             <connections>
                                 <action selector="clickedLogout:" destination="JtG-NZ-vcs" id="eiq-O7-eru"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="                     " id="PeD-G1-pul"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Eaw-9Y-Ort" id="KNB-kg-RM6"/>
