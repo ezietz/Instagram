@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **25** hours spent in total
+Time spent: **22** hours spent in total
 
 ## User Stories
 
@@ -51,9 +51,19 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+User can register for a new account, as well as log in.
+<img src='http://g.recordit.co/WPI7fmcgkL.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+User can logout, log back in, and set and change their profile picture.
+<img src='http://g.recordit.co/zb44VPapCy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can create a post and post it to their timeline, as well as view all of their posts in their own profile tab.
+<img src='http://g.recordit.co/hKgS8WBipE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can like posts, unlike posts, tap on a post to view post details, and tap on the author of the post's profile photo to visit that user's profile page and view their previous posts.
+<img src='http://g.recordit.co/zDEDfekmH2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [Recordit].
 
 ## Credits
 
@@ -65,6 +75,8 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Understanding how to allow the user to tap on a post's username or profile photo and go to that user's profile page was challenging at first. I realized that I needed to set the segue from the Timeline View Controller to the Profile View Controller. The infinite scroll was also quite hard to implement. It scrolled to see more posts correctly, but I realized I also had to check whether I had reached the last post, because there is a finite number of posts my users have posted.
 
 ## License
 
