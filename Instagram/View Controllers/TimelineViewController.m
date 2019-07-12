@@ -34,9 +34,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    
-//    self.navigationItem.title = [NSString stringWithFormat:@"Instagram"];
-    
     UIImage *image = [UIImage imageNamed:@"1200px-Instagram_logo.svg"];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
 }
@@ -78,7 +75,6 @@
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             appDelegate.window.rootViewController = loginViewController;
-            
             NSLog(@"User logged out successfully");
         } else {
             NSLog(@"Error logging out: %@", error);
@@ -108,7 +104,6 @@
         cell.profileImage.clipsToBounds = YES;
     }];
     cell.delegate = self;
-    
     [cell.favoriteButton setImage:[UIImage imageNamed:@"66422791_465949564229928_9046473835854954496_n"] forState:UIControlStateNormal];
     [cell.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
     return cell;
@@ -135,7 +130,6 @@
     if(!self.isMoreDataLoading) {
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-        // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = true;
             Post *lastPost = [self.postArray lastObject];

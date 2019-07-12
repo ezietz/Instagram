@@ -28,7 +28,6 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
 //    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;

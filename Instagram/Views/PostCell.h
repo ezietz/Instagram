@@ -14,7 +14,6 @@
 @interface PostCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *countIncrement;
-//@property (weak, nonatomic) IBOutlet UILabel *userText;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *captionText;
 @property (strong, nonatomic) Post *post;

@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImage setUserInteractionEnabled:YES];
@@ -53,9 +52,5 @@
         self.countIncrement.text = likeCount;
     }
 }
-
-//- (void) postCell:(PostCell *) postCell didTap: (PFUser *) user{
-//    [self.delegate postCell:self didTap:self.post.author];
-//}
 
 @end
