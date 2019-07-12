@@ -23,8 +23,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
 
 - (void) didTapUserProfile:(UITapGestureRecognizer *) sender;
+
 @end
 
 @protocol PostCellDelegate
+
 - (void)postCell:(PostCell *)postCell didTap: (PFUser *) user;
+
 @end

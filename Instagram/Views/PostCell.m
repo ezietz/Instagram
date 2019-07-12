@@ -20,6 +20,7 @@
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
     [self.delegate postCell:self didTap:self.post.author];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
