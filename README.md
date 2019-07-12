@@ -45,7 +45,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. I'd like to discuss how to implement the custom camera view.
-2. I'm curious about how to implement the messaging between users.
+2. I'm curious about how to implement the messaging between users. I think it would be similar to the Parse Chat we implemented earlier.
 
 ## Video Walkthrough
 
